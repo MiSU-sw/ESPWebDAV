@@ -102,7 +102,7 @@ void Gcode::get_serial_commands() {
 void Gcode::gcode_M50() {
   for (char *fn = parser.string_arg; *fn; ++fn);
   config.ssid(parser.string_arg);
-  SERIAL_ECHO("ssid:");
+  SERIAL_ECHO("ssid: ");
   SERIAL_ECHOLN(config.ssid());
 }
 
@@ -112,7 +112,7 @@ void Gcode::gcode_M50() {
 void Gcode::gcode_M51() {
   for (char *fn = parser.string_arg; *fn; ++fn) if (*fn == ' ') *fn = '\0';
   config.password(parser.string_arg);
-  SERIAL_ECHO("password:");
+  SERIAL_ECHO("password: ");
   SERIAL_ECHOLN(config.password());
 }
 
@@ -146,7 +146,7 @@ void Gcode::gcode_M53() {
     SERIAL_ECHO("IP address: "); SERIAL_ECHOLN(WiFi.localIP());
     SERIAL_ECHO("RSSI: "); SERIAL_ECHOLN(WiFi.RSSI());
     SERIAL_ECHO("Mode: "); SERIAL_ECHOLN(WiFi.getPhyMode());
-    SERIAL_ECHO("Asscess to SD at the Run prompt : \\\\"); SERIAL_ECHO(WiFi.localIP());SERIAL_ECHOLN("\\DavWWWRoot");
+    SERIAL_ECHO("Access to SD at the Run prompt : \\\\"); SERIAL_ECHO(WiFi.localIP());SERIAL_ECHO("\\");SERIAL_ECHOLN(SHARE_LOCATION_NAME);
   }
 }
 

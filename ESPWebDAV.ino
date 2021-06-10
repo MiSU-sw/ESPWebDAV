@@ -32,13 +32,14 @@ void setup() {
     }
   }
   else {
-    SERIAL_ECHOLN("Welcome to FYSETC: www.fysetc.com");
+    SERIAL_ECHO("Welcome to "); SERIAL_ECHO(CUSTOM_HOSTNAME); SERIAL_ECHOLN(" by FYSETC: www.fysetc.com");
     SERIAL_ECHOLN("Please set the wifi config first");
     SERIAL_ECHOLN("- M50: Set the wifi ssid , 'M50 ssid-name'");
     SERIAL_ECHOLN("- M51: Set the wifi password , 'M51 password'");
     SERIAL_ECHOLN("- M52: Start to connect the wifi");
     SERIAL_ECHOLN("- M53: Check the connection status");
   }
+  
 }
 
 // ------------------------

@@ -86,7 +86,7 @@ And use the following command to connect the network or check the network status
 
 #### windows
 
-To access the drive from Windows, type ```\\ip\DavWWWRoot``` at the Run prompt, this will show in serial output as our [video](https://www.youtube.com/watch?v=YAFAK-jPcOs) shows.
+To access the drive from Windows, type ```\\ip\[SHARE_LOCATION_NAME]``` at the Run prompt, this will show in serial output as our [video](https://www.youtube.com/watch?v=YAFAK-jPcOs) shows.
 
 Or use Map Network Drive menu in Windows Explorer.
 

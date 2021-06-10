@@ -1,6 +1,6 @@
+#include "config.h"
 #include "network.h"
 #include "serial.h"
-#include "config.h"
 #include "pins.h"
 #include "ESP8266WiFi.h"
 #include "ESPWebDAV.h"
@@ -46,7 +46,7 @@ bool Network::start() {
   SERIAL_ECHO("IP address: "); SERIAL_ECHOLN(WiFi.localIP());
   SERIAL_ECHO("RSSI: "); SERIAL_ECHOLN(WiFi.RSSI());
   SERIAL_ECHO("Mode: "); SERIAL_ECHOLN(WiFi.getPhyMode());
-  SERIAL_ECHO("Asscess to SD at the Run prompt : \\\\"); SERIAL_ECHO(WiFi.localIP());SERIAL_ECHOLN("\\DavWWWRoot");
+  SERIAL_ECHO("Access to SD at the Run prompt : \\\\"); SERIAL_ECHO(WiFi.localIP());SERIAL_ECHO("\\");SERIAL_ECHOLN(SHARE_LOCATION_NAME);
 
   wifiConnected = true;
 
@@ -79,7 +79,7 @@ int Network::startDAVServer() {
   }
   
   sdcontrol.relinquishBusControl();
-  DBG_PRINTLN("FYSETC WebDAV server started");
+  DBG_PRINT(HOSTNAME);DBG_PRINTLN(" WebDAV server started");
   return 0;
 }
 

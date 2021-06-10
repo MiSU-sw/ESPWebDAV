@@ -70,7 +70,7 @@ int Config::loadSD() {
   }
   if(step != 2) { // We miss ssid or password
     //memset(data,) // TODO: do we need to empty the data?
-    SERIAL_ECHOLN("Please check your SSDI or PASSWORD in ini file");
+    SERIAL_ECHOLN("Please check your SSID or PASSWORD in ini file");
     rst = -6;
     goto FAIL;
   }
@@ -181,7 +181,7 @@ int Config::save_ip(const char *ip) {
     return -3;
   }
 
-  // Get SSID and PASSWORD from file
+  // Write M117 G code and IP into file
   char buf[21] = "M117 ";
   strncat(buf,ip,15);
   file.write(buf, 21);

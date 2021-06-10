@@ -1,6 +1,6 @@
 /* Using the WebDAV server
 	From windows - 
-		Run: \\HOSTNAME\DavWWWRoot
+		Run: \\HOSTNAME\SHARE_LOCATION_NAME
 		or Map Network Drive -> Connect to a Website
 */
 

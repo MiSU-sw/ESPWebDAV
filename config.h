@@ -9,6 +9,9 @@
 
 #define EEPROM_SIZE 512
 
+#define SHARE_LOCATION_NAME "DavWWWRoot"
+#define CUSTOM_HOSTNAME		"FYSETC"
+
 typedef struct config_type
 {
   unsigned char flag; // Was saved before?
