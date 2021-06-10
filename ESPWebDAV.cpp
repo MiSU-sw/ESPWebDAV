@@ -7,6 +7,7 @@
 #include <Hash.h>
 #include <time.h>
 #include "ESPWebDAV.h"
+#include "serial.h"
 
 // define cal constants
 const char *months[]  = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
@@ -460,6 +461,25 @@ void ESPWebDAV::handlePut(ResourceType resource)	{
 		send("201 Created", NULL, "");
 	else
 		send("200 OK", NULL, "");
+
+	time_t rawtime;
+	struct tm * ptm;
+
+	time(&rawtime);
+	ptm = localtime(&rawtime);
+	
+	// set creation date time
+	if (!nFile.timestamp(T_CREATE, 1900+(ptm->tm_year), 1+(ptm->tm_mon), ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec)) {
+		return handleWriteError("set create time failed", &nFile);
+	}
+	// set write/modification date time
+	if (!nFile.timestamp(T_WRITE, 1900+(ptm->tm_year), 1+(ptm->tm_mon), ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec)) {
+		return handleWriteError("set write time failed", &nFile);
+	}
+	// set access date
+	if (!nFile.timestamp(T_ACCESS, 1900+(ptm->tm_year), 1+(ptm->tm_mon), ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec)) {
+		return handleWriteError("set access time failed", &nFile);
+	}
 
 	nFile.close();
 }

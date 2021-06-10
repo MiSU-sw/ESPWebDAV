@@ -3,6 +3,7 @@
 #include "serial.h"
 #include "pins.h"
 #include "ESP8266WiFi.h"
+#include "time.h"
 #include "ESPWebDAV.h"
 #include "sdControl.h"
 
@@ -57,6 +58,23 @@ bool Network::start() {
   SERIAL_ECHOLN("Going to start DAV server");
   if(startDAVServer() < 0) return false;
   wifiConnecting = false;
+
+  configTime(0, 0, "pool.ntp.org", "time.nist.gov");
+  SERIAL_ECHO("\nWaiting for time\n");
+  while (!time(nullptr)) {
+    SERIAL_ECHO(".");
+    delay(100);
+  }
+  SERIAL_ECHOLN(" ");
+
+  time_t rawtime;
+  struct tm * timeinfo;
+
+  time (&rawtime);
+  timeinfo = localtime (&rawtime);
+
+  delay(1000);
+  SERIAL_PRINTF("Current local time and date: %s", asctime(timeinfo));
 
   return true;
 }
