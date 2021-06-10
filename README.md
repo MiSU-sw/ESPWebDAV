@@ -1,3 +1,17 @@
+I had some minor issues with the original FYSETC firmware which I wanted to iron out.
+By default, files are created with a generic timestamp (1st of january 2000, 00:00:00 UTC+0). This gets in the way if you have a 3d printer which sorts by descending timestamp.
+This is an attempt at fixing this issue.
+There is a limitation: the newly-created file will have the timestamp set to the moment in time when it is copied.
+
+I also needed a better wifi signal reception because my 3d printer is a bit too far away from the router. Since from software it was already set up fine and I couldn't get better results by switching to 802.11 G or B, I made a hardware mod:
+I've cut the trace of the longer branch of the antenna and soldered a 58mm wire.
+This did the trick for me.
+There are other online resources which recommend different wire lenghts or types. As always, YMMV.
+
+
+Compile with the dependencies mentioned below. For increased transfer speed, you can try to choose 160MHz for CPU frequency. This will allow transfer rates to go from around 250KB/s to ~330KB/s. However I'm not sure what it does for stability.
+
+
 # WebDAV Server and a 3D Printer
 This project is a WiFi WebDAV server using ESP8266 SoC. It maintains the filesystem on an SD card.
 
@@ -16,7 +30,7 @@ GCode can be directly uploaded from the slicer (Cura) to this remote drive, ther
 
 ## Dependencies:
 1. [ESP8266 Arduino Core version 2.4](https://github.com/esp8266/Arduino)
-2. [SdFat library](https://github.com/greiman/SdFat)
+2. [SdFat library 1.0.16](https://github.com/greiman/SdFat)
 
 
 ## Use:
@@ -86,7 +100,7 @@ And use the following command to connect the network or check the network status
 
 #### windows
 
-To access the drive from Windows, type ```\\ip\[SHARE_LOCATION_NAME]``` at the Run prompt, this will show in serial output as our [video](https://www.youtube.com/watch?v=YAFAK-jPcOs) shows.
+To access the drive from Windows, type ```\\ip\DavWWWRoot``` (or whatever you have set as DAV share name) at the Run prompt, this will show in serial output as our [video](https://www.youtube.com/watch?v=YAFAK-jPcOs) shows.
 
 Or use Map Network Drive menu in Windows Explorer.
 
