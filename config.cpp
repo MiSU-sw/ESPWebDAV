@@ -181,7 +181,7 @@ int Config::save_ip(const char *ip) {
     return -3;
   }
 
-  // Write M117 G code and IP into file
+  // Write M117 G code and IP into file - call this file in the printer to display the IP address
   char buf[21] = "M117 ";
   strncat(buf,ip,15);
   file.write(buf, 21);

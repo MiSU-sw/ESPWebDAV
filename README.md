@@ -52,11 +52,23 @@ If you don't want to update the firmware. You don't need to do this. Compile and
 
   Select Tools->boards->Generic ESP8285 Module.
 
+- Select CPU Frequency
+
+  I think the default is 80MHz but I found that it works better running at 160MHz
+
+  Select Tools-> CPU Frequency -> 160 MHz
+
+- Select lwip stack
+
+  Based on my own test, I've found much better network performance (and also support for very large files transfer) using 
+
+  Select Tools -> lwIP Variant -> v2 Prebuilt (MSS=1460, unstable)
+
 - Click the Arduino compile button
 
 #### Upload
 
-1. Pulg in the USB cable to your computer.
+1. Plug in the USB cable to your computer.
 2. Press and hold the module FLSH 
 3. Connect the USB cable to the module
 4. Release the module FLSH button
@@ -100,7 +112,7 @@ And use the following command to connect the network or check the network status
 
 #### windows
 
-To access the drive from Windows, type ```\\ip\DavWWWRoot``` (or whatever you have set as DAV share name) at the Run prompt, this will show in serial output as our [video](https://www.youtube.com/watch?v=YAFAK-jPcOs) shows.
+To access the drive from Windows, type ```\\ip\[SHARE_LOCATION_NAME]``` at the Run prompt, this will show in serial output as our [video](https://www.youtube.com/watch?v=YAFAK-jPcOs) shows.
 
 Or use Map Network Drive menu in Windows Explorer.
 

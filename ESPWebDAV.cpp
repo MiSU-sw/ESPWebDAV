@@ -360,7 +360,7 @@ void ESPWebDAV::handleGet(ResourceType resource, bool isGet)	{
 
 	if(isGet)	{
 		// disable Nagle if buffer size > TCP MTU of 1460
-		// client.setNoDelay(1);
+		client.setNoDelay(1);
 
 		// send the file
 		while(rFile.available())	{
