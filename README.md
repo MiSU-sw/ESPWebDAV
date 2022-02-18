@@ -4,8 +4,8 @@ This is an attempt at fixing this issue.
 There is a limitation: the newly-created file will have the timestamp set to the moment in time when it is copied.
 
 I also needed a better wifi signal reception because my 3d printer is a bit too far away from the router. Since from software it was already set up fine and I couldn't get better results by switching to 802.11 G or B, I made a hardware mod:
-I've cut the trace of the longer branch of the antenna and soldered a 58mm wire.
-This did the trick for me.
+I've cut the trace of the longer branch of the antenna and soldered a 58mm copper wire (from an ethernet cable).
+This did the trick for me. Soldering an IPEX connector and using an external antenna would also work.
 There are other online resources which recommend different wire lenghts or types. As always, YMMV.
 
 
@@ -60,7 +60,7 @@ If you don't want to update the firmware. You don't need to do this. Compile and
 
 - Select lwip stack
 
-  Based on my own test, I've found much better network performance (and also support for very large files transfer) using 
+  Based on my own tests, I've found much better network performance (and also support for very large files transfer) using 
 
   Select Tools -> lwIP Variant -> v2 Prebuilt (MSS=1460, unstable)
 
